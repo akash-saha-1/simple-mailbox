@@ -1,0 +1,9 @@
+.flag-icon,
+.delete-icon {
+    display: none;
+}
+
+.list-group-item.list-group-item-action:hover .flag-icon,
+.list-group-item.list-group-item-action:hover .delete-icon {
+    display: block;
+}

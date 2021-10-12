@@ -1,8 +1,20 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { AboutHtml } from './AboutHtml';
+import './inbox.css';
+import $ from 'jquery';
 
 export const InboxHtml = ({ parent }) => {
   const [searchText, setSearchText] = useState('');
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if ($('.list-group-item.list-group-item-action').length > 0) {
+  //       $('.list-group-item.list-group-item-action').hover(function () {
+  //         console.log($(this).find('.flag-icon'));
+  //       });
+  //     }
+  //   }, 100);
+  // }, []);
 
   const clearSearch = useCallback(() => {
     setSearchText('');
@@ -249,7 +261,7 @@ export const InboxHtml = ({ parent }) => {
                             </div>
                             <div className="col-auto px-0 order-last order-sm-2 align-self-center text-right">
                               <a
-                                className="text-secondary px-md-1"
+                                className="text-secondary px-md-1 flag-icon"
                                 title="Flag"
                                 onClick={() => parent.doFlag(idx)}
                               >
@@ -268,9 +280,10 @@ export const InboxHtml = ({ parent }) => {
                             </div>
                             <div className="col-auto px-0 order-last order-sm-2 align-self-center text-right">
                               <a
-                                className="text-secondary px-md-1"
+                                className="text-secondary px-md-1 delete-icon"
                                 title="Deleted"
                                 onClick={() => parent.doDelete(idx)}
+                                href="#"
                               >
                                 <span className="icon icon-trash fa fa-fw fa-trash" />
                               </a>
@@ -296,6 +309,7 @@ export const InboxHtml = ({ parent }) => {
                                       : 'View this message'
                                   }
                                   onClick={() => parent.doShow(idx)}
+                                  href="#"
                                 >
                                   {item.subject}
                                 </a>
@@ -303,12 +317,12 @@ export const InboxHtml = ({ parent }) => {
                                   <i className="align-middle fa fa-paperclip icon-paper-clip" />
                                 ) : null}
                                 {/* <button
-                                  type="button"
-                                  className="btn btn-outline-secondary btn-sm ml-2 d-none d-md-inline"
-                                  onClick={() => parent.doShow(idx)}
-                                >
-                                  Open
-                                </button> */}
+                                    type="button"
+                                    className="btn btn-outline-secondary btn-sm ml-2 d-none d-md-inline"
+                                    onClick={() => parent.doShow(idx)}
+                                  >
+                                    Open
+                                  </button> */}
                               </p>
                             </div>
                           </summary>
